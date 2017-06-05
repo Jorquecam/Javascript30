@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS + JS Clock</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+		<div class="clock">
+			<div class="clock-face">
+				<div class="hand hour-hand"></div>
+				<div class="hand min-hand"></div>
+				<div class="hand second-hand"></div>
+			</div>
+			<div class="twelve">12</div>
+			<div class="three">3</div>
+			<div class="six">6</div>
+			<div class="nine">9</div>
+		</div>
+
+		<script>
+			const secondHand = document.querySelector('.second-hand');//Select the second hand div
+			const minHand = document.querySelector('.min-hand');//Select the minute hand div
+			const hourHand = document.querySelector('.hour-hand');//Select the hour hand div
+
+			function setDate(){//Function that allow to set the hands movement
+				const now = new Date();//Declare the constant with the current date value
+				const seconds = now.getSeconds();//Set the constant with the seconds value of date
+				const secondsDegrees = ((seconds / 60)*360)+90;//Set the position degrees of the second hand div in the correct position
+				secondHand.style.transform = `rotate(${secondsDegrees}deg)`;//Set the transition of the second div
+
+				const mins = now.getMinutes();//Set the constant with the minutes value of date
+				const minsDegrees = ((mins / 60)*360)+90;//Set the position degrees of the minute hand div in the correct position
+				minHand.style.transform = `rotate(${minsDegrees}deg)`;//Set the transition of the minute div
+
+				const hours = now.getHours();//Set the constant with the hour value of date
+				const hoursDegrees = ((hours / 60)*360)+90;//Set the position degrees of the hour hand div in the correct position
+				hourHand.style.transform = `rotate(${hoursDegrees}deg)`;//Set the transition of the hour div
+			}
+
+			setInterval(setDate, 1000);//Refresh the Date value every second
+
+  			setDate();
+		</script>
+	</body>
+</html>
