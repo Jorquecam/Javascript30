@@ -23,14 +23,14 @@
     <img src="http://unsplash.it/800/500?image=899">
 
     <script>
-        const inputs = document.querySelectorAll('.controls input');
+        const inputs = document.querySelectorAll('.controls input');//Select all the inputs included into "controls" div
 
-        function handleUpdate(){
-            const suffix = this.dataset.sizing || '';
-            document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix );
+        function handleUpdate(){//Funtion that change the CSS variables value according to inputs values
+            const suffix = this.dataset.sizing || '';//Select the value of the input that trigger the function
+            document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix );//Change the variables value
         }
 
-        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));//Trigger the function when the range of the input is changed
         inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
     </script>
